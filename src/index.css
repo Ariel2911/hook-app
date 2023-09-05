@@ -8,10 +8,21 @@ body {
 button {
   padding: 0.5rem;
   margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 input {
   margin: 0.5rem;
+}
+
+blockquote {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: rgb(241, 235, 235);
 }
 
 .flex {
