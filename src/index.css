@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 60px;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+.flex {
+  display: flex;
+}
+.flex-jcsb {
+  display: flex;
+  justify-content: space-between;
+}
+.complete {
+  text-decoration: line-through;
+}
+
+.isActive {
+  color: 'red';
+}
+.red {
+  color: 'red';
+}
+.blue {
+  color: 'blue';
+}
