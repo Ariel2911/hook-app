@@ -1,5 +1,6 @@
-import { useCounter } from '../hook/useCounter';
-import { useFetch } from '../hook/useFetch';
+import { useCounter, useFetch } from '../hook';
+import { LoadingQuote } from './LoadingQuote';
+import { Quote } from './Quote';
 
 export const MultipleCustomHooks = () => {
   const { increment, decrement, counter } = useCounter(1);
@@ -15,14 +16,10 @@ export const MultipleCustomHooks = () => {
       <hr />
 
       {isLoading ? (
-        <p>Cargando...</p>
+        <LoadingQuote />
       ) : (
-        data &&
         data.map(({ quote, author }, index) => (
-          <blockquote key={index}>
-            <p>{quote}</p>
-            <footer>{author}</footer>
-          </blockquote>
+          <Quote key={index} quote={quote} author={author} />
         ))
       )}
 
