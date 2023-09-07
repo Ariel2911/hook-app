@@ -1,21 +1,27 @@
 import { useReducer } from 'react';
 import { todoReducer } from './todoReducer';
+import { TodoList } from './TodoList';
+import { TodoAdd } from './TodoAdd';
 
 const initialState = [
   {
     id: new Date().getTime(),
     description: 'Recolectar la piedra del alma',
-    done: FontFaceSetLoadEvent,
+    done: false,
   },
   {
     id: new Date().getTime() + 1,
-    description: 'Recolectar la piedra del alma',
-    done: FontFaceSetLoadEvent,
+    description: 'Recolectar la piedra del tiempo',
+    done: false,
   },
 ];
 
 export const TodoApp = () => {
-  const [todo, dispatch] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(todoReducer, initialState);
+
+  const handleTodo = (todo) => {
+    console.log({ todo });
+  };
 
   return (
     <>
@@ -24,23 +30,13 @@ export const TodoApp = () => {
       </h2>
       <hr />
 
-      <ul>
-        {todo.map(({ id, description }) => (
-          <li key={id}>
-            <span>{description}</span>
-            <button>Borrar</button>
-          </li>
-        ))}
-      </ul>
+      <TodoList todos={todos} />
 
       <div>
         <h3>Agregar Todo</h3>
         <hr />
 
-        <form>
-          <input type="text" placeholder="¿Qué hay que hacer?" />
-          <button>Agregar</button>
-        </form>
+        <TodoAdd handleTodo={handleTodo} />
       </div>
     </>
   );
