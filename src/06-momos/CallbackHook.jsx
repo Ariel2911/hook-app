@@ -5,8 +5,8 @@ import { useCallback } from 'react';
 export const CallbackHook = () => {
   const [counter, setCounter] = useState(10);
 
-  const increment = useCallback(() => {
-    setCounter((counter) => counter + 1);
+  const increment = useCallback((value = 1) => {
+    setCounter((counter) => counter + value);
   }, []);
 
   return (
