@@ -19,7 +19,7 @@ const initialState = [
 export const TodoApp = () => {
   const [todos, dispatch] = useReducer(todoReducer, initialState);
 
-  const handleTodo = (todo) => {
+  const handleNewTodo = (todo) => {
     console.log({ todo });
   };
 
@@ -36,7 +36,7 @@ export const TodoApp = () => {
         <h3>Agregar Todo</h3>
         <hr />
 
-        <TodoAdd handleTodo={handleTodo} />
+        <TodoAdd onNewTodo={handleNewTodo} />
       </div>
     </>
   );
