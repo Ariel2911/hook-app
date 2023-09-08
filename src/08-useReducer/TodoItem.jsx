@@ -1,8 +1,8 @@
-export const TodoItem = ({ description }) => {
+export const TodoItem = ({ todo, onDeleteTodo }) => {
   return (
     <li style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <span>{description}</span>
-      <button>Borrar</button>
+      <span>{todo.description}</span>
+      <button onClick={() => onDeleteTodo(todo.id)}>Borrar</button>
     </li>
   );
 };
