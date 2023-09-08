@@ -13,6 +13,10 @@ export const useTodos = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  const todosCount = todos.length;
+
+  const pendingTodosCount = todos.filter(todo => !todo.done).length;
+
   const handleNewTodo = (todo) => {
     dispatch({
       type: '[TODO] Add Todo',
@@ -39,6 +43,8 @@ export const useTodos = () => {
 
   return{
     todos,
+    todosCount,
+    pendingTodosCount,
     handleNewTodo,
     handleDeleteTodo,
     handleToggleTodo
