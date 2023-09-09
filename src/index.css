@@ -28,23 +28,6 @@ blockquote {
   background-color: rgb(241, 235, 235);
 }
 
-.flex {
-  display: flex;
-}
-.flex-jcsb {
-  display: flex;
-  justify-content: space-between;
-}
-.complete {
-  text-decoration: line-through;
-}
-
-.isActive {
-  color: 'red';
-}
-.red {
-  color: 'red';
-}
-.blue {
-  color: 'blue';
+a {
+  margin: 5px;
 }
