@@ -1,3 +1,10 @@
 # Hook App
 
-Aplicación de practica donde se profundizan los Hooks
+Aplicación de práctica donde se profundizan los Hooks
+
+## Test
+
+Los test se realizaron con:
+
+- Jest
+- Testing Library
