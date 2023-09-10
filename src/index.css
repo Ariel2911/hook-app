@@ -30,4 +30,14 @@ blockquote {
 
 a {
   margin: 5px;
+  padding: 4px;
+}
+
+a:hover {
+  color: red;
+}
+
+.isActive {
+  color: aqua;
+  background-color: darkblue;
 }
