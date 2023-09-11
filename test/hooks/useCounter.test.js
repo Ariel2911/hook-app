@@ -38,4 +38,15 @@ describe('Pruebas en useCounter', () => {
 
   });
 
+  test('debe decrementar el contador', () => {
+    const{ result } = renderHook(() => useCounter())
+
+    const { decrement } = result.current
+
+    act(decrement)
+
+    expect(result.current.counter).toBe(9)
+
+  });
+
 })
