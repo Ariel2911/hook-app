@@ -14,4 +14,12 @@ describe('Pruebas en useCounter', () => {
     expect(increment).toEqual(expect.any(Function))
     expect(reset).toEqual(expect.any(Function))
   })
+
+  test('debe de inicicializar el counter con el valor de 100', () => {
+    const{ result } = renderHook(() => useCounter(100))
+
+    const { counter } = result.current
+
+    expect(counter).toBe(100)
+  })
 })
