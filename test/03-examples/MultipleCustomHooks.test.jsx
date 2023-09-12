@@ -7,10 +7,12 @@ jest.mock('../../src/hook/useCounter');
 
 describe('Pruebas en <MultipleCustomHooks />', () => {
   const mockIncrement = jest.fn();
+  const mockDecrement = jest.fn();
 
   useCounter.mockReturnValue({
     counter: 1,
     increment: mockIncrement,
+    decrement: mockDecrement,
   });
 
   beforeEach(() => {
@@ -86,5 +88,16 @@ describe('Pruebas en <MultipleCustomHooks />', () => {
     expect(mockIncrement).toHaveBeenCalled();
 
     // screen.debug();
+  });
+  test('debe llamar la función decrementar', () => {
+    render(<MultipleCustomHooks />);
+
+    const sustracButton = screen.getByRole('button', {
+      name: 'Decrementar cantidad de frase',
+    });
+
+    fireEvent.click(sustracButton);
+
+    expect(mockDecrement).toHaveBeenCalled();
   });
 });
