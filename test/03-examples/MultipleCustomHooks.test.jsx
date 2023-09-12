@@ -1,10 +1,22 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MultipleCustomHooks } from '../../src/03-examples/MultipleCustomHooks';
-import { useFetch } from '../../src/hook';
+import { useCounter, useFetch } from '../../src/hook';
 
 jest.mock('../../src/hook/useFetch');
+jest.mock('../../src/hook/useCounter');
 
 describe('Pruebas en <MultipleCustomHooks />', () => {
+  const mockIncrement = jest.fn();
+
+  useCounter.mockReturnValue({
+    counter: 1,
+    increment: mockIncrement,
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('debe mostrar el componente por defecto', () => {
     useFetch.mockReturnValue({
       data: null,
@@ -52,6 +64,26 @@ describe('Pruebas en <MultipleCustomHooks />', () => {
 
     expect(addButton.disabled).toBeFalsy;
     expect(subtractButton.disabled).toBeFalsy;
+
+    // screen.debug();
+  });
+
+  test('debe llamar la función incrementar', () => {
+    useFetch.mockReturnValue({
+      data: [{ author: 'ariel', quote: 'Hola Mundo' }],
+      isLoading: false,
+      hasError: null,
+    });
+
+    render(<MultipleCustomHooks />);
+
+    const addButton = screen.getByRole('button', {
+      name: 'Incrementar cantidad de frase',
+    });
+
+    fireEvent.click(addButton);
+
+    expect(mockIncrement).toHaveBeenCalled();
 
     // screen.debug();
   });
