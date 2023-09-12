@@ -47,4 +47,17 @@ describe('Pruebas en todoReducer', () => {
 
   });
 
+  test('debe realizar un toggle del todo', () => {
+
+    const action = {
+      type: '[TODO] Toggle Todo', 
+      payload: 1,
+    };
+
+    const newState = todoReducer(initialState, action);
+
+    expect(newState[0].done).toBe(true);
+
+  });
+
 })
