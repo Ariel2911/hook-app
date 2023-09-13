@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { TodoItem } from '../../src/08-useReducer/TodoItem';
 
 describe('Pruebas en <TodoItem />', () => {
@@ -50,5 +50,23 @@ describe('Pruebas en <TodoItem />', () => {
     const liElement = screen.getByRole('listitem');
 
     expect(liElement.innerHTML).toContain('text-decoration: line-through');
+  });
+
+  test('span debe llamar el ToggleTodo cuando se hace click sobre el', () => {
+    todo.done = true;
+
+    render(
+      <TodoItem
+        todo={todo}
+        onDeleteTodo={onDeleteTodoMock}
+        onToggleTodo={onToggleTodoMock}
+      />
+    );
+
+    const spanElement = screen.getByText(todo.description);
+
+    fireEvent.click(spanElement);
+
+    expect(onToggleTodoMock).toHaveBeenCalledWith(todo.id);
   });
 });
