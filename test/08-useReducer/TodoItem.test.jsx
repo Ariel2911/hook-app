@@ -69,4 +69,22 @@ describe('Pruebas en <TodoItem />', () => {
 
     expect(onToggleTodoMock).toHaveBeenCalledWith(todo.id);
   });
+
+  test('button debe llamar el DeleteTodo cuando se hace click sobre el', () => {
+    todo.done = true;
+
+    render(
+      <TodoItem
+        todo={todo}
+        onDeleteTodo={onDeleteTodoMock}
+        onToggleTodo={onToggleTodoMock}
+      />
+    );
+
+    const buttonElement = screen.getByRole('button');
+
+    fireEvent.click(buttonElement);
+
+    expect(onDeleteTodoMock).toHaveBeenCalledWith(todo.id);
+  });
 });
