@@ -35,4 +35,20 @@ describe('Pruebas en <TodoItem />', () => {
 
     expect(liElement.innerHTML).toContain(todo.description);
   });
+
+  test('debe mostrar el Todo completado', () => {
+    todo.done = true;
+
+    render(
+      <TodoItem
+        todo={todo}
+        onDeleteTodo={onDeleteTodoMock}
+        onToggleTodo={onToggleTodoMock}
+      />
+    );
+
+    const liElement = screen.getByRole('listitem');
+
+    expect(liElement.innerHTML).toContain('text-decoration: line-through');
+  });
 });
